@@ -1,8 +1,6 @@
 <?php
 	include 'connection.php';
     
-   
-   
 	$serial = $_POST["serial"];
     $room = $_POST["room"];
     $floor= $_POST["floor"];

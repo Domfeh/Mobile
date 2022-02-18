@@ -1,20 +1,19 @@
 <?php
 include "connection.php";
 
-$email="adwoa@@gmail.com";
+// $email="adwoa@gmail.com";
 
-$oldNum="000004444";
-$newNum="000004";
+// $oldNum="000004";
+// $newNum="1111";
 
-//$email=$_POST['Fs_email'];
+$email=$_POST['Fs_email'];
 
-//$oldNum=$_POST['oldNumber'];
-//$newNum=$_POST['newNumber'];
+$oldNum=$_POST['oldNumber'];
+$newNum=$_POST['newNumber'];
 $query = "SELECT email, phoneNumber FROM users WHERE email='$email' AND phoneNumber='$oldNum' LIMIT 1";
 $sql=mysqli_query($conn,$query);
 $count=mysqli_num_rows($sql);
 if($count==1){  
-	// 			$email =$fetch['email'];
 
  $sql = ("UPDATE `users` SET `phoneNumber`='$newNum' WHERE `email`='$email' AND `phoneNumber`='$oldNum'");
 		$result = mysqli_query($conn, $sql);
