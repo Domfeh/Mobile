@@ -1,22 +1,39 @@
 <?php
-	include 'connection.php';
-    $oldNum= $_POST["oldNumber"];
-    $newNum = $_POST["newNumber"];
-    $email = $_POST["Fs_email"];
+include "connection.php";
 
-    $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email`='$email'");
-				$fetch = mysqli_fetch_array($query);
+$email="adwoa@@gmail.com";
 
-		$email =$fetch['email'];
-        $sql = ("UPDATE `users` SET `phoneNumber`='$newNum' WHERE `phoneNumber`='$oldNum' and `Fs_email`='$email' ");
-        $update=mysqli_query($conn, $sql);
-    
-        if($update){
-        echo json_encode("Success");
-    }else{
-        echo json_encode("Error");
-    }
-        
+$oldNum="000004444";
+$newNum="000004";
+
+//$email=$_POST['Fs_email'];
+
+//$oldNum=$_POST['oldNumber'];
+//$newNum=$_POST['newNumber'];
+$query = "SELECT email, phoneNumber FROM users WHERE email='$email' AND phoneNumber='$oldNum' LIMIT 1";
+$sql=mysqli_query($conn,$query);
+$count=mysqli_num_rows($sql);
+if($count==1){  
+	// 			$email =$fetch['email'];
+
+ $sql = ("UPDATE `users` SET `phoneNumber`='$newNum' WHERE `email`='$email' AND `phoneNumber`='$oldNum'");
+		$result = mysqli_query($conn, $sql);
+	if($result){
+		echo json_encode("Success");
+		}
+	else {
+		
+		echo json_encode("Error");
+
+		}
+
+} else {
+		
+		echo json_encode("Errors");
+
+}
+
+mysqli_close($conn); 
 
 
 ?>
