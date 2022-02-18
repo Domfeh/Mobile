@@ -1,17 +1,17 @@
 <?php
+include "connection.php";
+
+$email="adwoa@gmail.com";
 
 
-include "session.php";
-session_start();
-if($login_session){
+//$email=$_POST['Fs_email'];
+$query = $conn-> query("SELECT * FROM new_users WHERE FK_email='$email' ");
+$result=array();
 
-    include 'connection.php';
-    $sql="select count(distinct id) from users";
-    $result=mysqli_query($conn,$sql);
-    $row=mysqli_fetch_array($result);
-    $result= "$row[0]";
-    echo json_encode($result);
-}else{
-  echo  json_encode("Error");
+while($fetchData=$query->fetch_assoc()){
+	$result[]=$fetchData;
 }
-?>    
+echo json_encode($result);
+ //echo $result[0]['id'];
+
+?>
