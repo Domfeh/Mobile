@@ -1,11 +1,11 @@
 <?php
 include "connection.php";
 
-$email="adwoa@gmail.com";
+//$email="servicefire.gh@gmail.com";
 
 
-//$email=$_POST['Fs_email'];
-$query = $conn-> query("SELECT * FROM new_users WHERE FK_email='$email' ");
+$email=$_POST['Fs_email'];
+$query = $conn-> query("SELECT * FROM users WHERE email='$email' ");
 $result=array();
 
 while($fetchData=$query->fetch_assoc()){
