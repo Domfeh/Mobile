@@ -7,11 +7,9 @@ $email="adwoa@gmail.com";
 //$email=$_POST['Fs_email'];
 $query = $conn-> query("SELECT * FROM new_users WHERE FK_email='$email' ");
 $result=array();
+$fetchData=$query->fetch_assoc();
 
-while($fetchData=$query->fetch_assoc()){
-	$result[]=$fetchData;
-}
-echo json_encode($result);
+echo json_encode($fetchData);
  //echo $result[0]['id'];
 
 ?>
