@@ -2,7 +2,7 @@
 
     include 'connection.php';
     //$email='adwoa@gmail.com';
-$email = $_POST["Fs_email"];
+    $email = $_POST["Fs_email"];
     $sql="SELECT * FROM new_users  WHERE `Fk_email`='$email'";
     $result=mysqli_query($conn, $sql);
 
@@ -15,4 +15,4 @@ $email = $_POST["Fs_email"];
 }else{
   echo  "No Result Found";
 }
-?>    
+?>   
