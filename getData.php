@@ -2,8 +2,8 @@
 
     include 'connection.php';
     //$email='adwoa@gmail.com';
-$email = $_POST["Fs_email"];
-    $sql="SELECT * FROM new_users  WHERE `Fk_email`='$email'";
+    $email = $_POST["Fs_email"];
+    $sql="SELECT * FROM users  WHERE `email`='$email'";
     $result=mysqli_query($conn, $sql);
 
     if($result ->num_rows > 0){
